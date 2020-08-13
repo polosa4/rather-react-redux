@@ -13,7 +13,7 @@ import { Link, withRouter } from 'react-router-dom'
      render(){
         const { question } = this.props
         const {name, avatar, id, optionOne} = question
-         console.log(this.props)
+         console.log(question)
          return (
              <div>
                  <div className="row">
