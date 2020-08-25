@@ -38,7 +38,7 @@ class NewQuestion extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <div className="form-group" style={{paddingRight: '20px'}}>
                                 <input type="text" onChange={this.handleChange1} className="form-control" placeholder="Option 1"></input>
-                                <div class="col-auto">OR</div>
+                                <div className="col-auto">OR</div>
                                 <input type="text" onChange={this.handleChange2} className="form-control" placeholder="Option 2"></input>
                             </div>
                             <input type="submit" className="fourth" value="Add"/>

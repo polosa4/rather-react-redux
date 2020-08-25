@@ -19,8 +19,7 @@ class Dashboard extends Component {
     }
     
     render(){
-        console.log(this.props)
-
+        
         return (
             
             <div className="generalQ">
@@ -51,11 +50,9 @@ function mapStateToProps ({questions, users, authedUser}){
     const allQs = Object.values(questions)
     const userAs = authedUser ? Object.keys(users[authedUser].answers) : []
     return {
-        //console.log(tweets)
         questionsID: Object.keys(questions),
         qAnswerred: allQs.filter(q => !userAs.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp),
         qUnaswered: allQs.filter(q => userAs.includes(q.id)).sort((a, b) => b.timestamp - a.timestamp)
-        //.sort((a,b) => tweets[b].timestamp - tweets[a].timestamp )
     }
 }
 

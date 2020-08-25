@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from "react";
 import ReactNavbar from "react-responsive-signin-animate-navbar-os";
 import { connect } from 'react-redux'
-import { Link, withRouter, NavLink, Redirect } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { removeAuthedUser } from '../actions/authUser'
  
 class Navbar extends Component {

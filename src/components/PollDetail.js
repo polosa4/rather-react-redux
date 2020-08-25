@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, Card, Form, Button, Col, ProgressBar, Badge } from 'react-bootstrap'
 import { handleAnswer } from '../actions/shared'
-//import NavigationBar from './navigationBar'
 import '../App.css'
 import { Redirect } from 'react-router-dom';
 
@@ -113,12 +111,8 @@ class PollDetail extends Component {
                                     <button type="button" className="btn btn-primary btn-block" onClick={this.onSubmit}>Submit</button>
 
                             </div>
-                            
-                            
-                            
-                            </div>  
-                        
-                            </div>  
+                          </div>  
+                        </div>  
                             
                         )}
                 

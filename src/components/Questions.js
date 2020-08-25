@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {formatQuestion} from '../utils/helpers'
-//import { TiArrowBackOutline,TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti'
-//import { TiArrowBackOutline } from 'react-icons/ti'
-//import { TiHeartOutline } from 'react-icons/ti'
-//import { TiHeartFullOutline } from 'react-icons/ti'
-//import { handleToggleTweet } from '../actions/tweets'
-import { Link, withRouter, Redirect } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
  class Questions extends Component {
     state = {
@@ -14,21 +9,18 @@ import { Link, withRouter, Redirect } from 'react-router-dom'
       };
 
     handleClick = () => {
-        //<Redirect push to={`/articles`} />;
-        console.log("hello")
         this.setState(prevState => ({
             viewPoll: !prevState.viewPoll
           }));
-        
     }
 
      render(){
         const { question } = this.props
-        const {name, avatar, id, optionOne} = question
+        const {name, avatar, optionOne} = question
         if (this.state.viewPoll === true) {
             return <Redirect push to={`/questions/${this.props.question.id}`} />;
           }
-         console.log(question)
+         
          return (
              <div>
                  <div className="row">
@@ -47,8 +39,6 @@ import { Link, withRouter, Redirect } from 'react-router-dom'
                         <div><p><b>Would you rather</b></p>
                         <span>...{optionOne.text}...</span>
                         </div>
-                    
-            
                 </div>
                 
              </div>  
@@ -59,10 +49,8 @@ import { Link, withRouter, Redirect } from 'react-router-dom'
 
  function mapStateToProps ({users, questions}, {id}){
      const question = questions[id]
-     //const user = user[id]
-     //const parentTweet = tweet ? tweets[tweet.replyingTo] : null
+     
      return {
-         //authedUser,
          question: question ? formatQuestion(question, users[question.author]) : null
      }
  }

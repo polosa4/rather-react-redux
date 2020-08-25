@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/shared'
-import logo from '../logo.svg';
 import '../App.css';
 import Navbar from "./Navbar";
 import SignIn from "./SignIn";
 import Dashboard from './Dashboard'
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import NewQuestion from './NewQuestion'
 import PollDetail from './PollDetail'
 import Leaderboard from './Leaderboard'

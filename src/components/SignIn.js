@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {formatQuestion} from '../utils/helpers'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import '../form.css';
 import { setAuthedUser} from '../actions/authUser'
 import { Redirect } from 'react-router-dom'
@@ -40,22 +39,15 @@ import { fakeAuth } from './PrivateRoute'
      render(){
          const {users} = this.props
          const {usersO} = this.props
-         //const {toDash} = this.state
-         //if (toDash === true) {
-            //return <Redirect to='/dashboard' />
-          //}
-        const { toDash } = this.state
-        const { from } = this.props.location.state || { from : { pathname: '/Dashboard' } }
+         const { toDash } = this.state
+         const { from } = this.props.location.state || { from : { pathname: '/Dashboard' } }
 
         if (toDash === true) {
             return (
                 <Redirect to={from} />
             )
         }
-        //const { id, name } = users
-        //const {name, id} = question
-         console.log(this.props)
-         let count = 0;
+                 
          return (
             <div className="generalQ" style={{height: '355px'}}>
                 
