@@ -6,7 +6,12 @@ import '../App.css';
 import Navbar from "./Navbar";
 import SignIn from "./SignIn";
 import Dashboard from './Dashboard'
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import NewQuestion from './NewQuestion'
+import PollDetail from './PollDetail'
+import Leaderboard from './Leaderboard'
+import PrivateRoute from './PrivateRoute'
+import ErrorPage from './Er404'
 
 class App extends Component {
   componentDidMount(){
@@ -29,7 +34,11 @@ class App extends Component {
         <Navbar/>
         
         <Route path='/' exact component={SignIn} />
-        <Route path='/dashboard' component={Dashboard} />
+        <PrivateRoute path='/dashboard' component={Dashboard} />
+        <PrivateRoute path='/add' component={NewQuestion} />
+        <PrivateRoute path='/leaderboard' component={Leaderboard} />
+        <PrivateRoute path="/404-page" component={ErrorPage}/>
+        <PrivateRoute path="/questions/:id" component={ PollDetail }/>
         
         
       </Router>

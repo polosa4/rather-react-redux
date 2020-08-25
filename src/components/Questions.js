@@ -6,13 +6,28 @@ import {formatQuestion} from '../utils/helpers'
 //import { TiHeartOutline } from 'react-icons/ti'
 //import { TiHeartFullOutline } from 'react-icons/ti'
 //import { handleToggleTweet } from '../actions/tweets'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 
  class Questions extends Component {
-    
+    state = {
+        viewPoll: false
+      };
+
+    handleClick = () => {
+        //<Redirect push to={`/articles`} />;
+        console.log("hello")
+        this.setState(prevState => ({
+            viewPoll: !prevState.viewPoll
+          }));
+        
+    }
+
      render(){
         const { question } = this.props
         const {name, avatar, id, optionOne} = question
+        if (this.state.viewPoll === true) {
+            return <Redirect push to={`/questions/${this.props.question.id}`} />;
+          }
          console.log(question)
          return (
              <div>
@@ -20,7 +35,7 @@ import { Link, withRouter } from 'react-router-dom'
                  <div className="col-md-1"></div>
             <div className="col-md-6 userS">{name}</div>
             </div>
-            <div className="col-md-10 tweet">
+            <div className="col-md-10 tweet" onClick={this.handleClick} >
                  
                  <img
               src={avatar}
@@ -35,6 +50,7 @@ import { Link, withRouter } from 'react-router-dom'
                     
             
                 </div>
+                
              </div>  
              </div>
          )

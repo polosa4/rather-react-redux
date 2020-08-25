@@ -5,10 +5,7 @@ export default function authedUser (state=null, action) {
         case SET_AUTHED_USER :
             return action.id
         case REMOVE_AUTHED_USER :
-            return {
-                ...state,
-                authedUser: action.id
-            }
+            return ''
                
         default:
                 return state

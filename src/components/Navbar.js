@@ -1,29 +1,28 @@
 import React, {Component, Fragment} from "react";
-import ReactNavbar from "react-responsive-animate-navbar";
+import ReactNavbar from "react-responsive-signin-animate-navbar-os";
 import { connect } from 'react-redux'
-import { Link, withRouter, NavLink } from 'react-router-dom'
+import { Link, withRouter, NavLink, Redirect } from 'react-router-dom'
 import { removeAuthedUser } from '../actions/authUser'
  
 class Navbar extends Component {
+  
+  
   handleSubmit = (userId) => {
-    
-    
     const { dispatch } = this.props
-    
-    dispatch(removeAuthedUser(userId))
-    
-    
-    
+   dispatch(removeAuthedUser(userId))
   }
+
+
   render() {
     
     const { user } = this.props
-    if (typeof user === "undefined") {
-
+    if (typeof user === "undefined" || user.authedUser === "") {
+      return (
+        <Redirect to="/" />
+      )
     }else{
       var { name, id } = user
-      console.log(name)
-    }
+    } 
     
     
     return (
@@ -37,31 +36,31 @@ class Navbar extends Component {
         userid={id}
         logo="https://svgshare.com/i/KHh.svg"
         menu={[
-          { name: "HOME", to: "/" },
-          { name: "ARTICLES", to: "/articles" },
-          { name: "ABOUT ME", to: "/about" },
-          { name: "CONTACT", to: "/contact" },
+          { name: "HOME", to: "/dashboard" },
+          { name: "NEW POLL", to: "/add" },
+          { name: "LEADERBOARD", to: "/leaderboard" },
+          
         ]}
         social={[
           {
-            name: "Linkedin",
-            url: "https://www.linkedin.com/in/nazeh-taha/",
-            icon: ["fab", "linkedin-in"],
+            //name: "Linkedin",
+            //url: "https://www.linkedin.com/in/oleh-stelmakh/",
+            //icon: ["fab", "linkedin-in"],
           },
           {
-            name: "Facebook",
-            url: "https://www.facebook.com/nazeh200/",
-            icon: ["fab", "facebook-f"],
+            //name: "Facebook",
+            //url: "https://www.facebook.com/oleg.stelmakh.1/",
+            //icon: ["fab", "facebook-f"],
           },
           {
-            name: "Instagram",
-            url: "https://www.instagram.com/nazeh_taha/",
-            icon: ["fab", "instagram"],
+            //name: "Instagram",
+            //url: "https://www.instagram.com/olegst/",
+            //icon: ["fab", "instagram"],
           },
           {
-            name: "Twitter",
-            url: "http://nazehtaha.herokuapp.com/",
-            icon: ["fab", "twitter"],
+            //name: "Twitter",
+            //url: "https://twitter.com/olegstelmakh1",
+            //icon: ["fab", "twitter"],
           },
         ]}
       />
@@ -76,7 +75,7 @@ function mapStateToProps ({ authedUser, users }) {
 
 return {
   
-  user: !users[authedUser] ? [] : users[authedUser]
+  user: users[authedUser]
 }
 }
 

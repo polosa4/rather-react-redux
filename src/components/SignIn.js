@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom'
 import '../form.css';
 import { setAuthedUser} from '../actions/authUser'
 import { Redirect } from 'react-router-dom'
+import { fakeAuth } from './PrivateRoute'
 
  class SignIn extends Component {
 
@@ -24,13 +25,14 @@ import { Redirect } from 'react-router-dom'
         e.preventDefault()
         const { user } = this.state
         const { dispatch } = this.props
-        
+        fakeAuth.authenticate(() => {
+            this.setState({
+                toDash: true
+            })
+        })
         dispatch(setAuthedUser(user))
         
-        this.setState(() => ({
-            //user: '',
-            toDash: user ? true : false,
-          }))
+       
         
     }
 
@@ -38,10 +40,18 @@ import { Redirect } from 'react-router-dom'
      render(){
          const {users} = this.props
          const {usersO} = this.props
-         const {toDash} = this.state
-         if (toDash === true) {
-            return <Redirect to='/dashboard' />
-          }
+         //const {toDash} = this.state
+         //if (toDash === true) {
+            //return <Redirect to='/dashboard' />
+          //}
+        const { toDash } = this.state
+        const { from } = this.props.location.state || { from : { pathname: '/Dashboard' } }
+
+        if (toDash === true) {
+            return (
+                <Redirect to={from} />
+            )
+        }
         //const { id, name } = users
         //const {name, id} = question
          console.log(this.props)
@@ -56,7 +66,7 @@ import { Redirect } from 'react-router-dom'
                     <div className='tweet-info'>
                         <form onSubmit={this.handleSubmit}>
                             <select onChange={this.handleChange} className="formC" ref="userId">
-                            <option key="xxx" value="none" selected disabled hidden> 
+                            <option key="xxx" value="none" hidden> 
                                 Select User
                             </option> 
                                 {usersO.map((user) => (

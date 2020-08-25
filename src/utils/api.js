@@ -15,10 +15,10 @@ import {
     }))
   }
   
-  export function saveQuestion (info) {
+  export function saveQuestionApi(info) {
     return _saveQuestion(info)
   }
   
-  export function saveQuestionAnswer (info) {
-    return _saveQuestionAnswer(info)
+  export function saveQuestionAnswerApi (info) {
+    return _saveQuestionAnswer(info) 
   }
